@@ -1,0 +1,41 @@
+<form #frm="ngForm" (ngSumbit)="onSubmit(frm)">
+  <div class="form-group">
+  <label for="idl">Name: </label><br>
+  <input type="text" required ngModel id="idl" class="form-control" name="V1"
+  #V1="ngModel" (change)="log(V1)">
+
+  <div class="alert alert-danger" *ngIf="V1.touched && !V1.valid">
+  First Name is required
+  </div>
+  </div>
+
+  <div class="form-group">
+  <label for="id2">Description: </label><br>
+  <textarea id="id2" cols="20" rows="5" class="form-control"></textarea>
+  </div>
+
+
+  <div class="checkbox">
+  <label>Qualification</label>
+  <br>Under Graduate <input type="checkbox" id="chkid1" ngModel name="UG"><br>
+  Post Graduate <input type="checkbox" id="chkid2" ngModel name="PG">
+  </div>
+
+  <div class="radio">
+  <label>Employment Status:</label>
+  <br> <input type="radio" value="Emboloyed" ngModel name="emp_status"> Employed<br>
+  <input type="radio" ngModel name="emp_status" value="Student">Student
+  </div>
+
+  <div class="form-group">
+  <label for="iddrp">City: </label><br>
+  <select name="slct" id="iddrp" ngModel class="form-control">
+  <option *ngFor="let ct of city" [value]="ct.name">{{ct.id}}.....{{ct.name}}</option>
+  </select>
+  </div>
+
+  <p>
+  {{frm.value | json}}
+  </p>
+
+  </form>
